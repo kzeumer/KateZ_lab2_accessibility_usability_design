@@ -85,16 +85,45 @@ Term: Fall 2026
                        id="dogError"></p>
                 </div>
 
-                <div class="form-group">
-                    <label for="dropOff">Drop Off Date</label>
-                    <input type="date"
-                           id="dropOff"
-                           name="dropOff"
-                           required
-                           aria-describedby="dropError">
-                    <p class="error-message"
-                       id="dropError"></p>
-                </div>
+                
+<!-- Drop Off Date -->
+<div class="form-group">
+    <label for="dropOff">
+        Drop Off Date (MM/DD/YYYY)
+    </label>
+
+    <input type="text"
+           id="dropOff"
+           name="dropOff"
+           placeholder="MM/DD/YYYY"
+           inputmode="numeric"
+           autocomplete="off"
+           required
+           aria-describedby="dropError">
+
+    <p class="error-message"
+       id="dropError"></p>
+</div>
+
+<!-- Pick Up Date -->
+<div class="form-group">
+    <label for="pickUp">
+        Pick Up Date (MM/DD/YYYY)
+    </label>
+
+    <input type="text"
+           id="pickUp"
+           name="pickUp"
+           placeholder="MM/DD/YYYY"
+           inputmode="numeric"
+           autocomplete="off"
+           required
+           aria-describedby="pickError">
+
+    <p class="error-message"
+       id="pickError"></p>
+</div>
+
 
                 <div class="form-group">
                     <label for="pickUp">Pick Up Date</label>
