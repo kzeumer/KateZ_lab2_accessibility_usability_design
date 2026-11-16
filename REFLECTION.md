@@ -14,7 +14,7 @@ Write about 400 to 500 words. Answer each question in your own words.
    - I kept getting an error message when I was running the HTML Validator while working on the homepage, so I asked AI to clarify the error. I asked it several times and it kept suggesting changes to the actual code when that wasn't what the validator was saying. Eventually I just restarted my VS codespace and I could tell it was using an older version of my code. 
      
 7. How did your project context file and your prompt pattern change what the AI gave you?
-   - 
+   - When I use AI, normally I give it very general and short prompts with minimal guidelines. When I had the context file and prompt patterns, I found the results were easier to parse. 
 
 9. Section 508 and WCAG are standards. Why is testing with real people and different tools still needed?
     - Testing with real people is important because it provides you with different perspectives. Especially if you are working with multiple files for a long time (like this project), you are sure to overlook things. Having a fresh set of eyes can help point out simple errors. Humans are error prone too, so it is good practice to use tools to verify your work. Tools also make the verification process quicker, which is never a bad thing.
