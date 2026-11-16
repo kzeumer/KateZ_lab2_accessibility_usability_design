@@ -145,29 +145,35 @@ Term: Fall 2026
 
             </div>
 
-            <!-- Drop off date -->
-            <div class="row">
+            
+<!-- Drop off date -->
+<div class="row">
+    <label for="d1">Drop Off Date (MM/DD/YYYY)</label>
+    <input
+        type="text"
+        id="d1"
+        name="dropOff"
+        placeholder="MM/DD/YYYY"
+        inputmode="numeric"
+        autocomplete="off"
+        aria-describedby="date-error"
+        required>
+</div>
 
-                <label for="d1">Drop Off Date</label>
+<!-- Pick up date -->
+<div class="row">
+    <label for="d2">Pick Up Date (MM/DD/YYYY)</label>
+    <input
+        type="text"
+        id="d2"
+        name="pickUp"
+        placeholder="MM/DD/YYYY"
+        inputmode="numeric"
+        autocomplete="off"
+        aria-describedby="date-error"
+        required>
+</div>
 
-                <input type="date"
-                       id="d1"
-                       name="dropOff"
-                       required
-                       aria-describedby="date-error">
-
-            </div>
-
-            <!-- Pick up date -->
-            <div class="row">
-
-                <label for="d2">Pick Up Date</label>
-
-                <input type="date"
-                       id="d2"
-                       name="pickUp"
-                       required
-                       aria-describedby="date-error">
 
             </div>
 
