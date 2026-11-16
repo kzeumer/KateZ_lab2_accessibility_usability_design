@@ -54,15 +54,7 @@ const dropOffInput = document.getElementById("dropOff");
 const pickUpInput = document.getElementById("pickUp");
 
 function updateDateLimits() {
-    const today = localDateString();
-
-    dropOffInput.min = today;
-
-    if (dropOffInput.value && dropOffInput.value > today) {
-        pickUpInput.min = dropOffInput.value;
-    } else {
-        pickUpInput.min = today;
-    }
+    // Manual date entry is validated on submission.
 }
 
 // Update date limits when drop off changes
