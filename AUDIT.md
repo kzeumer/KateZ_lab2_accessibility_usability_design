@@ -27,14 +27,14 @@ Contrast pairs checked:
 
 | # | What I saw (evidence) | Tool or test that showed it | POUR principle | WCAG idea | Severity | Planned fix |
 |---|---|---|---|---|---|---|
-| 1 | | | | | | |
-| 2 | | | | | | |
-| 3 | | | | | | |
-| 4 | | | | | | |
-| 5 | | | | | | |
-| 6 | | | | | | |
-| 7 | | | | | | |
-| 8 | | | | | | |
+| 1 | Duplicate IDs for Hours of Operation| HTML Validator| Robust | 1.3.1 | AA | Remove Duplicate |
+| 2 | Main Heading isn't formatted correctly | HTML Validator | Percievable | 1.3.1 | AA | Recode as a Header|
+| 3 | Hours not compatible with ARIA | HTML Validator | Perceivable| 1.3.1 | AAA | Remove ARIA from list|
+| 4 | Click Here Link Label Unclear | Wave | Understandable| 2.4.4 | AA | Change text of link so destination is clearer |
+| 5 | Request Stay Code Unclear | Wave| Understandable | 2.5.3 | Medium| Remove label so it matches|
+| 6 | Request Stay Button not Keyboard Accessible | Keyboard Test | Operable| 2.1.1| AAA | Replace link|
+| 7 | Navigation does not follow tab order| Keyboard Test |Operable| 2.4.3 |AAA| Remove Attirbutes |
+| 8 | Image not properly displaying alt text| Lighthouse | Perceivable| 1.1.1 |AA | Replace Alt Text |
 
 ## ARIA notes (Part 2, step 13)
 
