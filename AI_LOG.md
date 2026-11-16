@@ -24,9 +24,9 @@ Name:
 
 | # | Problem | How I found it (tool, test, or reading the diff) | Fixed by hand or by follow up prompt |
 |---|---|---|---|
-| 1 | | | |
-| 2 | | | |
-| 3 | | | |
+| 1 | Language and Meta Data | Tool| Fixed by Hand |
+| 2 | Prevent Past Dates from being picked | Tool | Follow up Prompt|
+| 3 | Correct Input Types | Tool | Follow up Prompt|
 
 ## A time the AI was wrong or unhelpful
 
