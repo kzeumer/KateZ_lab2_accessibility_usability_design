@@ -75,9 +75,9 @@ Design checklist for this page:
 
 | Task | Before (result) | After (result) |
 |---|---|---|
-| A | | |
-| B | | |
-| C | | |
+| A | Clicked Large, then added boarding and grooming. Total came to 168.50, but with the number given for the individual price it should've been 135. | Able to Add Size first then services, estimate break down was clearer.|
+| B | Added calendar dates; won't let me send the form. | Added calendar dates, form sucessfully sent with breakdown|
+| C | Not possible. | |
 
 ## Verification of book.html
 
