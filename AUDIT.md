@@ -39,6 +39,7 @@ Contrast pairs checked:
 ## ARIA notes (Part 2, step 13)
 
 For each ARIA attribute you kept or added, explain why a native HTML element could not do the job. If you use none, say so.
+- Used no ARIA for the home.html file
 
 ## Usability review of services.html
 
