@@ -84,21 +84,21 @@ Design checklist for this page:
 
 | Check | Result |
 |---|---|
-| HTML validator errors | |
-| Lighthouse accessibility score | |
-| Keyboard test (notes) | |
+| HTML validator errors | 0 |
+| Lighthouse accessibility score | 0 |
+| Keyboard test (notes) | Passed |
 | DevTools check of the status message container (what attribute did you see?) | |
 
 ## After (home.html final)
 
 | Check | Before | After |
 |---|---|---|
-| Lighthouse accessibility score | | |
-| WAVE errors | | |
-| WAVE contrast errors | | |
-| HTML validator errors | | |
-| Keyboard test | | |
-| 200% zoom and 320px test | | |
+| Lighthouse accessibility score | 84| 100 |
+| WAVE errors | 2 | 0 |
+| WAVE contrast errors | 0 | 0 |
+| HTML validator errors | 1 | 0 |
+| Keyboard test | Tab doesn't work on the homepage, Same issue going backwards on the homepage | Passed|
+| 200% zoom and 320px test | Text is cutoff, need to side scroll| Passed|
 
 ## Before shipping checklist (all three pages)
 
