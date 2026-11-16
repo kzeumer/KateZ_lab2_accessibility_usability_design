@@ -151,3 +151,29 @@ h2 {
         padding: 20px;
     }
 }
+
+/* Individual service removal buttons */
+.remove-btn {
+    margin-left: 12px;
+    padding: 6px 12px;
+    background-color: #ffffff;
+    color: #8b1e1e;
+    border: 2px solid #8b1e1e;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.remove-btn:hover {
+    background-color: #fce8e8;
+}
+
+.remove-btn:focus-visible {
+    outline: 3px solid #174ea6;
+    outline-offset: 3px;
+}
+
+#list li {
+    margin-bottom: 12px;
+    line-height: 1.8;
+}
