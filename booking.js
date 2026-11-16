@@ -1,3 +1,4 @@
+
 /*
 Name: Kate Zeumer
 Course: CPST 342
@@ -38,36 +39,44 @@ function clearErrors() {
     });
 }
 
-// Get today's date in local time
-function localDateString() {
-    const now = new Date();
+// Convert MM/DD/YYYY into a valid date
+function parseDate(value) {
+    const match = value.trim().match(
+        /^(\d{1,2})\/(\d{1,2})\/(\d{4})$/
+    );
 
-    const year = now.getFullYear();
-    const month = String(now.getMonth() + 1).padStart(2, "0");
-    const day = String(now.getDate()).padStart(2, "0");
+    if (!match) {
+        return null;
+    }
 
-    return `${year}-${month}-${day}`;
+    const month = Number(match[1]);
+    const day = Number(match[2]);
+    const year = Number(match[3]);
+
+    const date = new Date(year, month - 1, day);
+
+    // Reject impossible dates
+    if (
+        date.getFullYear() !== year ||
+        date.getMonth() !== month - 1 ||
+        date.getDate() !== day
+    ) {
+        return null;
+    }
+
+    date.setHours(0, 0, 0, 0);
+    return date;
 }
 
-// Prevent past dates from being selected
+// Get date inputs
 const dropOffInput = document.getElementById("dropOff");
 const pickUpInput = document.getElementById("pickUp");
-
-function updateDateLimits() {
-    // Manual date entry is validated on submission.
-}
-
-// Update date limits when drop off changes
-dropOffInput.addEventListener("change", updateDateLimits);
-
-// Set date limits when page loads
-updateDateLimits();
 
 // Validate form when submitted
 form.addEventListener("submit", function(event) {
     event.preventDefault();
 
-    // Clear previous errors and status messages
+    // Clear previous errors and messages
     clearErrors();
     statusMessage.textContent = "";
 
@@ -77,14 +86,14 @@ form.addEventListener("submit", function(event) {
     const owner = document.getElementById("ownerName")
         .value.trim();
 
-    const email = document.getElementById("email")
-        .value.trim();
+    const emailInput = document.getElementById("email");
+    const email = emailInput.value.trim();
 
     const dog = document.getElementById("dogName")
         .value.trim();
 
-    const drop = dropOffInput.value;
-    const pick = pickUpInput.value;
+    const drop = dropOffInput.value.trim();
+    const pick = pickUpInput.value.trim();
 
     // Validate owner name
     if (!owner) {
@@ -97,8 +106,6 @@ form.addEventListener("submit", function(event) {
     }
 
     // Validate email
-    const emailInput = document.getElementById("email");
-
     if (!email) {
         showError(
             "email",
@@ -125,17 +132,30 @@ form.addEventListener("submit", function(event) {
         valid = false;
     }
 
-    // Validate drop off date
-    const today = localDateString();
+    // Get today's date without the time
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
 
+    // Convert manually entered dates
+    const dropDate = parseDate(drop);
+    const pickDate = parseDate(pick);
+
+    // Validate drop off date
     if (!drop) {
         showError(
             "dropOff",
             "dropError",
-            "Choose a drop off date."
+            "Enter a drop off date in MM/DD/YYYY format."
         );
         valid = false;
-    } else if (drop < today) {
+    } else if (!dropDate) {
+        showError(
+            "dropOff",
+            "dropError",
+            "Enter a valid drop off date in MM/DD/YYYY format."
+        );
+        valid = false;
+    } else if (dropDate < today) {
         showError(
             "dropOff",
             "dropError",
@@ -149,21 +169,28 @@ form.addEventListener("submit", function(event) {
         showError(
             "pickUp",
             "pickError",
-            "Choose a pick up date."
+            "Enter a pick up date in MM/DD/YYYY format."
         );
         valid = false;
-    } else if (pick < today) {
+    } else if (!pickDate) {
+        showError(
+            "pickUp",
+            "pickError",
+            "Enter a valid pick up date in MM/DD/YYYY format."
+        );
+        valid = false;
+    } else if (pickDate < today) {
         showError(
             "pickUp",
             "pickError",
             "Pick up date cannot be in the past."
         );
         valid = false;
-    } else if (drop && pick < drop) {
+    } else if (dropDate && pickDate < dropDate) {
         showError(
             "pickUp",
             "pickError",
-            "Pick up date cannot be before drop off date."
+            "Pick up date cannot be before the drop off date."
         );
         valid = false;
     }
@@ -192,7 +219,4 @@ form.addEventListener("submit", function(event) {
 
     // Clear form after successful submission
     form.reset();
-
-    // Reset date restrictions
-    updateDateLimits();
 });
