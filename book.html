@@ -12,6 +12,7 @@ Term: Fall 2026
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Request a dog boarding stay at MPLS Dog Boarding in Minneapolis.">
+
     <title>Request a Stay | MPLS Dog Boarding</title>
 
     <link href="https://fonts.googleapis.com/css?family=Montserrat&amp;display=swap" rel="stylesheet">
@@ -20,159 +21,181 @@ Term: Fall 2026
 
 <body>
 
-<a href="#flexcontainer" class="skip-link">
-    Skip to main content
-</a>
+    <!-- Skip link for keyboard users -->
+    <a href="#flexcontainer" class="skip-link">
+        Skip to main content
+    </a>
 
-<div id="container">
+    <div id="container">
 
-    <header class="top">
-        <img src="img/paw.svg"
-            alt="MPLS Dog Boarding paw print logo">
+        <!-- Header -->
+        <header class="top">
 
-        <nav class="menu">
-            <a href="home.html">Home</a>
-            <a href="services.html">Services</a>
-            <a href="home.html#hours">Hours</a>
-        </nav>
-    </header>
+            <img src="img/paw.svg"
+                 alt="MPLS Dog Boarding paw print logo">
 
-    <main id="flexcontainer">
+            <nav class="menu" aria-label="Main navigation">
+                <a href="home.html">Home</a>
+                <a href="services.html">Services</a>
+                <a href="home.html#hours">Hours</a>
+            </nav>
 
-        <section class="card booking-card">
+        </header>
 
-            <h1 class="title">Request a Stay</h1>
+        <!-- Main content -->
+        <main id="flexcontainer">
+
+            <section class="card booking-card">
+
+                <h1 class="title">Request a Stay</h1>
+
+                <p>
+                    Complete the form below to request boarding
+                    for your dog. All fields are required.
+                </p>
+
+                <form id="bookingForm" novalidate>
+
+                    <!-- Owner Name -->
+                    <div class="form-group">
+
+                        <label for="ownerName">
+                            Owner Name
+                        </label>
+
+                        <input type="text"
+                               id="ownerName"
+                               name="ownerName"
+                               autocomplete="name"
+                               required
+                               aria-describedby="ownerError">
+
+                        <p class="error-message"
+                           id="ownerError"></p>
+
+                    </div>
+
+                    <!-- Email Address -->
+                    <div class="form-group">
+
+                        <label for="email">
+                            Email Address
+                        </label>
+
+                        <input type="email"
+                               id="email"
+                               name="email"
+                               autocomplete="email"
+                               required
+                               aria-describedby="emailError">
+
+                        <p class="error-message"
+                           id="emailError"></p>
+
+                    </div>
+
+                    <!-- Dog Name -->
+                    <div class="form-group">
+
+                        <label for="dogName">
+                            Dog Name
+                        </label>
+
+                        <input type="text"
+                               id="dogName"
+                               name="dogName"
+                               required
+                               aria-describedby="dogError">
+
+                        <p class="error-message"
+                           id="dogError"></p>
+
+                    </div>
+
+                    <!-- Drop Off Date -->
+                    <div class="form-group">
+
+                        <label for="dropOff">
+                            Drop Off Date (MM/DD/YYYY)
+                        </label>
+
+                        <input type="text"
+                               id="dropOff"
+                               name="dropOff"
+                               placeholder="MM/DD/YYYY"
+                               inputmode="numeric"
+                               autocomplete="off"
+                               required
+                               aria-describedby="dropError">
+
+                        <p class="error-message"
+                           id="dropError"></p>
+
+                    </div>
+
+                    <!-- Pick Up Date -->
+                    <div class="form-group">
+
+                        <label for="pickUp">
+                            Pick Up Date (MM/DD/YYYY)
+                        </label>
+
+                        <input type="text"
+                               id="pickUp"
+                               name="pickUp"
+                               placeholder="MM/DD/YYYY"
+                               inputmode="numeric"
+                               autocomplete="off"
+                               required
+                               aria-describedby="pickError">
+
+                        <p class="error-message"
+                           id="pickError"></p>
+
+                    </div>
+
+                    <!-- Submit button -->
+                    <button type="submit" class="btn">
+                        Send Stay Request
+                    </button>
+
+                </form>
+
+                <!-- Accessible success message -->
+                <div id="formStatus"
+                     role="status"
+                     aria-live="polite"
+                     aria-atomic="true"></div>
+
+            </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="foot">
+
+            <h2>Contact Us</h2>
 
             <p>
-                Complete the form below to request boarding
-                for your dog. All fields are required.
+                Phone:
+                <a href="tel:6125550142">
+                    612-555-0142
+                </a>
             </p>
 
-            <form id="bookingForm" novalidate>
+            <p>
+                Address: 123 Example Street,
+                Minneapolis, MN 55401
+            </p>
 
-                <div class="form-group">
-                    <label for="ownerName">Owner Name</label>
-                    <input type="text"
-                           id="ownerName"
-                           name="ownerName"
-                           autocomplete="name"
-                           required
-                           aria-describedby="ownerError">
-                    <p class="error-message"
-                       id="ownerError"></p>
-                </div>
+            <p>&copy; 2026 MPLS Dog Boarding</p>
 
-                <div class="form-group">
-                    <label for="email">Email Address</label>
-                    <input type="email"
-                           id="email"
-                           name="email"
-                           autocomplete="email"
-                           required
-                           aria-describedby="emailError">
-                    <p class="error-message"
-                       id="emailError"></p>
-                </div>
+        </footer>
 
-                <div class="form-group">
-                    <label for="dogName">Dog Name</label>
-                    <input type="text"
-                           id="dogName"
-                           name="dogName"
-                           required
-                           aria-describedby="dogError">
-                    <p class="error-message"
-                       id="dogError"></p>
-                </div>
+    </div>
 
-                
-<!-- Drop Off Date -->
-<div class="form-group">
-    <label for="dropOff">
-        Drop Off Date (MM/DD/YYYY)
-    </label>
-
-    <input type="text"
-           id="dropOff"
-           name="dropOff"
-           placeholder="MM/DD/YYYY"
-           inputmode="numeric"
-           autocomplete="off"
-           required
-           aria-describedby="dropError">
-
-    <p class="error-message"
-       id="dropError"></p>
-</div>
-
-<!-- Pick Up Date -->
-<div class="form-group">
-    <label for="pickUp">
-        Pick Up Date (MM/DD/YYYY)
-    </label>
-
-    <input type="text"
-           id="pickUp"
-           name="pickUp"
-           placeholder="MM/DD/YYYY"
-           inputmode="numeric"
-           autocomplete="off"
-           required
-           aria-describedby="pickError">
-
-    <p class="error-message"
-       id="pickError"></p>
-</div>
-
-
-                <div class="form-group">
-                    <label for="pickUp">Pick Up Date</label>
-                    <input type="date"
-                           id="pickUp"
-                           name="pickUp"
-                           required
-                           aria-describedby="pickError">
-                    <p class="error-message"
-                       id="pickError"></p>
-                </div>
-
-                <button type="submit" class="btn">
-                    Send Stay Request
-                </button>
-
-            </form>
-
-            <!-- Live region exists before submission.
-                 Screen readers can announce updates. -->
-            <div id="formStatus"
-                 role="status"
-                 aria-live="polite"
-                 aria-atomic="true"></div>
-
-        </section>
-
-    </main>
-
-    <footer class="foot">
-        <h2>Contact Us</h2>
-
-        <p>
-            Phone:
-            <a href="tel:6125550142">612-555-0142</a>
-        </p>
-
-        <p>
-            Address: 123 Example Street,
-            Minneapolis, MN 55401
-        </p>
-
-        <p>&copy; 2024 MPLS Dog Boarding</p>
-    </footer>
-
-</div>
-
-<script src="booking.js" defer></script>
-    
+    <!-- External JavaScript file -->
+    <script src="booking.js" defer></script>
 
 </body>
 </html>
