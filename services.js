@@ -71,18 +71,6 @@ function localDateString() {
     return `${year}-${month}-${day}`;
 }
 
-// Prevent past dates from being selected
-function updateDateLimits() {
-    const today = localDateString();
-
-    dropOff.min = today;
-
-    if (dropOff.value && dropOff.value > today) {
-        pickUp.min = dropOff.value;
-    } else {
-        pickUp.min = today;
-    }
-}
 
 // Display a clear error message
 function showDateError(field, message) {
@@ -102,21 +90,84 @@ function clearDateErrors() {
     pickUp.removeAttribute("aria-invalid");
 }
 
-// Validate dates
+
+// Text fields do not support min date restrictions.
+// Validation will happen when calculating the estimate.
+function updateDateLimits() {
+    // No date-picker restrictions needed.
+}
+
+// Convert MM/DD/YYYY into a valid calendar date.
+function parseDate(value) {
+    const match = value.trim().match(
+        /^(\d{1,2})\/(\d{1,2})\/(\d{4})$/
+    );
+
+    if (!match) {
+        return null;
+    }
+
+    const month = Number(match[1]);
+    const day = Number(match[2]);
+    const year = Number(match[3]);
+
+    const date = new Date(year, month - 1, day);
+
+    if (
+        date.getFullYear() !== year ||
+        date.getMonth() !== month - 1 ||
+        date.getDate() !== day
+    ) {
+        return null;
+    }
+
+    return date;
+}
+
 function validateDates() {
     clearDateErrors();
 
-    const firstDate = dropOff.value;
-    const secondDate = pickUp.value;
-    const today = localDateString();
+    const firstDate = parseDate(dropOff.value);
+    const secondDate = parseDate(pickUp.value);
+
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
 
     if (!firstDate) {
         showDateError(
             dropOff,
-            "Choose a drop off date."
+            "Enter a valid drop off date in MM/DD/YYYY format."
         );
         return false;
     }
+
+    if (firstDate < today) {
+        showDateError(
+            dropOff,
+            "Drop off date cannot be in the past."
+        );
+        return false;
+    }
+
+    if (!secondDate) {
+        showDateError(
+            pickUp,
+            "Enter a valid pick up date in MM/DD/YYYY format."
+        );
+        return false;
+    }
+
+    if (secondDate < firstDate) {
+        showDateError(
+            pickUp,
+            "Pick up date cannot be before the drop off date."
+        );
+        return false;
+    }
+
+    return true;
+}
+
 
     if (firstDate < today) {
         showDateError(
