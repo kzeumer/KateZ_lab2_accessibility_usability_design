@@ -6,22 +6,22 @@ Name:
 
 | Check | Result |
 |---|---|
-| Lighthouse accessibility score | |
-| Lighthouse failed audits | |
-| WAVE errors | |
-| WAVE contrast errors | |
-| WAVE alerts | |
-| HTML validator errors | |
-| Keyboard test (notes) | |
-| 200% zoom and 320px test (notes) | |
+| Lighthouse accessibility score | 84 |
+| Lighthouse failed audits | 4 |
+| WAVE errors | 2 |
+| WAVE contrast errors | 0 |
+| WAVE alerts | 2 |
+| HTML validator errors | 1 |
+| Keyboard test (notes) | Tab doesn't work on the homepage, Same issue going backwards on the homepage|
+| 200% zoom and 320px test (notes) | Text is cutoff, need to side scroll|
 
-Contrast pairs checked:
+Contrast pairs checked:  
 
 | Text color | Background color | Ratio | Pass or fail (4.5:1 normal, 3:1 large) |
 |---|---|---|---|
-| | | | |
-| | | | |
-| | | | |
+| c9a3e8 | 8a8a8a | 1.62:1 | Fail |
+| b8b8b8 | 8a8a8a | 1.74:1 | Fail |
+| 8AB4FF | 8a8a8a | 1.65:1| Fail |
 
 ## Problems found on home.html (at least 8)
 
