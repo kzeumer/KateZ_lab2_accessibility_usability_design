@@ -1,0 +1,257 @@
+
+<!--
+Name: Kate Zeumer
+Course: CPST 342
+Term: Fall 2026
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Request a dog boarding stay at MPLS Dog Boarding in Minneapolis.">
+    <title>Request a Stay | MPLS Dog Boarding</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<a href="#flexcontainer" class="skip-link">
+    Skip to main content
+</a>
+
+<div id="container">
+
+    <header class="top">
+        <img src="img/mpls_dog_logo.png"
+             alt="MPLS Dog Boarding logo">
+
+        <nav class="menu">
+            <a href="home.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="home.html#hours">Hours</a>
+        </nav>
+    </header>
+
+    <main id="flexcontainer">
+
+        <section class="card booking-card">
+
+            <h1 class="title">Request a Stay</h1>
+
+            <p>
+                Complete the form below to request boarding
+                for your dog. All fields are required.
+            </p>
+
+            <form id="bookingForm" novalidate>
+
+                <div class="form-group">
+                    <label for="ownerName">Owner Name</label>
+                    <input type="text"
+                           id="ownerName"
+                           name="ownerName"
+                           autocomplete="name"
+                           required
+                           aria-describedby="ownerError">
+                    <p class="error-message"
+                       id="ownerError"></p>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email"
+                           id="email"
+                           name="email"
+                           autocomplete="email"
+                           required
+                           aria-describedby="emailError">
+                    <p class="error-message"
+                       id="emailError"></p>
+                </div>
+
+                <div class="form-group">
+                    <label for="dogName">Dog Name</label>
+                    <input type="text"
+                           id="dogName"
+                           name="dogName"
+                           required
+                           aria-describedby="dogError">
+                    <p class="error-message"
+                       id="dogError"></p>
+                </div>
+
+                <div class="form-group">
+                    <label for="dropOff">Drop Off Date</label>
+                    <input type="date"
+                           id="dropOff"
+                           name="dropOff"
+                           required
+                           aria-describedby="dropError">
+                    <p class="error-message"
+                       id="dropError"></p>
+                </div>
+
+                <div class="form-group">
+                    <label for="pickUp">Pick Up Date</label>
+                    <input type="date"
+                           id="pickUp"
+                           name="pickUp"
+                           required
+                           aria-describedby="pickError">
+                    <p class="error-message"
+                       id="pickError"></p>
+                </div>
+
+                <button type="submit" class="btn">
+                    Send Stay Request
+                </button>
+
+            </form>
+
+            <!-- Live region exists before submission.
+                 Screen readers can announce updates. -->
+            <div id="formStatus"
+                 role="status"
+                 aria-live="polite"
+                 aria-atomic="true"></div>
+
+        </section>
+
+    </main>
+
+    <footer class="foot">
+        <h2>Contact Us</h2>
+
+        <p>
+            Phone:
+            <a href="tel:6125550142">612-555-0142</a>
+        </p>
+
+        <p>
+            Address: 123 Example Street,
+            Minneapolis, MN 55401
+        </p>
+
+        <p>&copy; 2024 MPLS Dog Boarding</p>
+    </footer>
+
+</div>
+
+<script>
+const form = document.getElementById("bookingForm");
+const statusMessage = document.getElementById("formStatus");
+
+const fields = [
+    ["ownerName", "ownerError"],
+    ["email", "emailError"],
+    ["dogName", "dogError"],
+    ["dropOff", "dropError"],
+    ["pickUp", "pickError"]
+];
+
+function showError(fieldId, errorId, message) {
+    document.getElementById(errorId).textContent = message;
+    document.getElementById(fieldId)
+        .setAttribute("aria-invalid", "true");
+}
+
+function clearErrors() {
+    fields.forEach(([fieldId, errorId]) => {
+        document.getElementById(errorId).textContent = "";
+        document.getElementById(fieldId)
+            .removeAttribute("aria-invalid");
+    });
+}
+
+function localDateString() {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, "0");
+    const day = String(now.getDate()).padStart(2, "0");
+
+    return `${year}-${month}-${day}`;
+}
+
+form.addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    clearErrors();
+    statusMessage.textContent = "";
+
+    let valid = true;
+
+    const owner = document.getElementById("ownerName").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const dog = document.getElementById("dogName").value.trim();
+    const drop = document.getElementById("dropOff").value;
+    const pick = document.getElementById("pickUp").value;
+
+    if (!owner) {
+        showError("ownerName", "ownerError",
+            "Enter your name.");
+        valid = false;
+    }
+
+    const emailInput = document.getElementById("email");
+
+    if (!email) {
+        showError("email", "emailError",
+            "Enter your email address.");
+        valid = false;
+    } else if (!emailInput.validity.valid) {
+        showError("email", "emailError",
+            "Enter an email like name@example.com.");
+        valid = false;
+    }
+
+    if (!dog) {
+        showError("dogName", "dogError",
+            "Enter your dog's name.");
+        valid = false;
+    }
+
+    const today = localDateString();
+
+    if (!drop) {
+        showError("dropOff", "dropError",
+            "Choose a drop off date.");
+        valid = false;
+    } else if (drop < today) {
+        showError("dropOff", "dropError",
+            "Drop off date cannot be in the past.");
+        valid = false;
+    }
+
+    if (!pick) {
+        showError("pickUp", "pickError",
+            "Choose a pick up date.");
+        valid = false;
+    } else if (drop && pick < drop) {
+        showError("pickUp", "pickError",
+            "Pick up date cannot be before drop off date.");
+        valid = false;
+    }
+
+    if (!valid) {
+        return;
+    }
+
+    // Future Node.js integration:
+    // Send the validated booking request to the
+    // server using fetch() when the backend is ready.
+
+    // Simulate a successful request for this assignment.
+    statusMessage.textContent =
+        "Request received. We will reply within one business day.";
+
+    form.reset();
+});
+</script>
+
+</body>
+</html>
