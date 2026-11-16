@@ -146,6 +146,7 @@ function validateDates() {
 }
 
 // Update selected services and estimated total
+
 function render() {
     list.innerHTML = "";
 
@@ -154,28 +155,57 @@ function render() {
     chosen.forEach(function(key) {
         const item = document.createElement("li");
 
-        item.textContent =
-            names[key] + ": $" + prices[key].toFixed(2);
+        // Display service name and price
+        const serviceText = document.createElement("span");
+        serviceText.textContent =
+            names[key] + ": $" + prices[key].toFixed(2) + " ";
 
+        // Create an individual Remove button
+        const removeButton = document.createElement("button");
+        removeButton.type = "button";
+        removeButton.className = "remove-btn";
+        removeButton.textContent = "Remove " + names[key];
+
+        // Remove only the selected service
+        removeButton.addEventListener("click", function() {
+            chosen = chosen.filter(function(service) {
+                return service !== key;
+            });
+
+            render();
+
+            statusMessage.textContent =
+                names[key] + " removed from your estimate.";
+
+            // Return focus to the service selection button
+            const serviceButton = document.querySelector(
+                '.svc[data-key="' + key + '"]'
+            );
+
+            if (serviceButton) {
+                serviceButton.focus();
+            }
+        });
+
+        item.appendChild(serviceText);
+        item.appendChild(removeButton);
         list.appendChild(item);
 
         sum += prices[key];
     });
 
+    // Calculate updated total
     const multiplier = factor[sizeSelect.value] || 1;
     const estimatedTotal = sum * multiplier;
 
     total.textContent = "$" + estimatedTotal.toFixed(2);
 
-    // Show which service buttons are selected
+    // Update selected button states
     serviceButtons.forEach(function(button) {
         const key = button.getAttribute("data-key");
         const selected = chosen.includes(key);
 
-        button.setAttribute(
-            "aria-pressed",
-            String(selected)
-        );
+        button.setAttribute("aria-pressed", String(selected));
     });
 }
 
