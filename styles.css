@@ -102,7 +102,7 @@ button:focus-visible,
     gap: 20px;
     width: 100%;
     padding: 25px;
-    background: url('img/dog_bg.jpeg') center / cover no-repeat;
+    background: url('img/paw.svg') center / cover no-repeat;
 }
 
 /* Content cards */
