@@ -45,25 +45,31 @@ For each ARIA attribute you kept or added, explain why a native HTML element cou
 Task scenarios:
 
 - Task A: Estimate the cost for a large dog for boarding and grooming.
+- Clicked Large, then added boarding and grooming. Total came to 168.50, but with the number given for the individual price it should've been 135.
 - Task B: Find out if a stay from December 24, 2026 to December 26, 2026 is possible.
+- Added calendar dates; won't let me send the form.
 - Task C: You added Training by mistake. Remove only Training.
+- Not possible. 
 
 Findings (at least 6, at least 5 different heuristics):
 
 | # | Task | Evidence (what happened) | Heuristic | Severity | Change to test |
 |---|---|---|---|---|---|
-| 1 | | | | | |
-| 2 | | | | | |
-| 3 | | | | | |
-| 4 | | | | | |
-| 5 | | | | | |
-| 6 | | | | | |
+| 1 | Choose Dog Size | There are available sizes but the descriptions don't make sense and should be required before you add services | Match between System and Real World| High | Clearer Labels |
+| 2 | Cost Calculator| Services don't always add up to the total | Visibility | Medium | Add status|
+| 3 | Promotional Messages| Distracting on Screen; Don't lead anywhere | Aesthetic | Medium | Remove/Condense |
+| 4 | Sending a Form | Do Difference/Action between go and send | Recognition | High | Change Labels to be clearer |
+| 5 | Scheduling Dates | Chart Function Works, inputing dates manually is glitchy| Consistency | High| Recode so its clearer|
+| 6 | Size Chart| Clicking on Size chart does nothing| Help and Documentation | Medium| Add chart |
 
 Design checklist for this page:
 
 - Who is using this?
+- Dog Owners 
 - What is the primary action?
+- Booking the Services 
 - What competes with it?
+- Faulty mechanics and unclear guidelines
 
 ## Retest of services.html
 
