@@ -4,8 +4,8 @@ Name:
 
 ## My AI setup
 
-- Tool and where it runs (editor, terminal):
-- Version or model, if shown:
+- Tool and where it runs (editor, terminal): ChatGPT, Browser
+- Version or model, if shown: GPT-^
 - Project context file name and location:
 - Did the tool correctly list and describe my project files on the first try? What did I fix?
 
