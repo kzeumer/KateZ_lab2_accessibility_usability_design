@@ -233,3 +233,68 @@ button:focus-visible,
         padding: 20px;
     }
 }
+
+/* Request a Stay form */
+
+.booking-card {
+    flex: 1 1 100%;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.form-group input {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    padding: 12px;
+    font: inherit;
+    color: #333333;
+    background-color: #ffffff;
+    border: 2px solid #555555;
+    border-radius: 5px;
+}
+
+.form-group input:focus-visible {
+    outline: 3px solid #174ea6;
+    outline-offset: 2px;
+}
+
+.form-group input[aria-invalid="true"] {
+    border: 3px solid #a11919;
+}
+
+.error-message {
+    color: #a11919;
+    font-size: 14px;
+    font-weight: 600;
+    margin: 6px 0;
+}
+
+.error-message:empty {
+    display: none;
+}
+
+#formStatus {
+    margin-top: 20px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+#formStatus:not(:empty) {
+    padding: 15px;
+    border: 2px solid #286a38;
+    border-radius: 5px;
+    background-color: #f0faf2;
+    color: #20532c;
+}
