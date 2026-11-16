@@ -1,84 +1,267 @@
+<!--
+Name: Kate Zeumer
+Course: CPST 342
+Term: Fall 2026
+-->
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Build an estimate for MPLS Dog Boarding services.">
-<title>Services | MPLS Dog Boarding</title>
-<link rel="stylesheet" href="services.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore dog boarding services and calculate an estimated cost at MPLS Dog Boarding.">
+
+    <title>Services | MPLS Dog Boarding</title>
+
+    <link rel="stylesheet" href="services.css">
 </head>
+
 <body>
 
-<header class="site-header">
-  <a href="home.html" class="brand">MPLS Dog Boarding</a>
-  <nav aria-label="Main">
-    <a href="home.html">Home</a>
-    <a href="services.html">Services</a>
-  </nav>
-</header>
+    <!-- Skip link for keyboard users -->
+    <a href="#main" class="skip-link">
+        Skip to main content
+    </a>
 
-<main id="main">
+    <!-- Header and navigation -->
+    <header class="site-header">
 
-  <div class="promo promo1">WELCOME!!! SPECIAL OFFER TODAY!!!</div>
-  <div class="promo promo2">NEW: WEBCAM ACCESS ONLY $10 <a href="#">CLICK HERE</a></div>
-  <div class="promo promo3">HOLIDAY SPOTS GOING FAST!!! BOOK NOW!!!</div>
+        <a href="home.html" class="brand">
+            MPLS Dog Boarding
+        </a>
 
-  <h1>Services</h1>
+        <nav aria-label="Main navigation">
+            <a href="home.html">Home</a>
+            <a href="services.html" aria-current="page">Services</a>
+            <a href="home.html#hours">Hours</a>
+        </nav>
 
-  <section>
-    <h2>Pick a Service</h2>
-    <div class="grid8">
-      <button class="btn svc" data-key="boarding">Boarding</button>
-      <button class="btn svc" data-key="daycare">Daycare</button>
-      <button class="btn svc" data-key="grooming">Grooming</button>
-      <button class="btn svc" data-key="training">Training</button>
-      <button class="btn svc" data-key="webcam">Webcam Access</button>
-      <button class="btn svc" data-key="taxi">Pet Taxi</button>
-      <button class="btn svc" data-key="gift">Gift Cards</button>
-      <button class="btn svc" data-key="member">Memberships</button>
-    </div>
-  </section>
+    </header>
 
-  <section>
-    <h2>Info</h2>
-    <div class="row">
-      <label for="size">Size</label>
-      <select id="size">
-        <option value="S1">S1</option>
-        <option value="M2">M2</option>
-        <option value="L3">L3</option>
-        <option value="XL4">XL4</option>
-      </select>
-      <a href="#">See chart</a>
-    </div>
-    <div class="row">
-      <label for="d1">Date 1</label>
-      <input type="date" id="d1">
-    </div>
-    <div class="row">
-      <label for="d2">Date 2</label>
-      <input type="date" id="d2">
-    </div>
-    <div class="actions">
-      <button class="btn" id="reset">Reset</button>
-      <button class="btn" id="go">Go</button>
-      <button class="btn" id="send">Send</button>
-    </div>
-    <div id="spinner" class="spinner" hidden></div>
-  </section>
+    <main id="main">
 
-  <section>
-    <h2>Kennel nights</h2>
-    <ul id="list"></ul>
-    <p>Est.: <span id="total">$0</span></p>
-  </section>
+        <h1>Services</h1>
 
-</main>
+        <p>
+            Explore our services and calculate an estimated
+            cost for your dog's stay.
+        </p>
 
-<footer class="site-footer">
-  <p>&copy; 2019 to 2026 MPLS Dog Boarding</p>
-</footer>
+        <!-- Service selection -->
+        <section aria-labelledby="service-heading">
 
-<script src="services.js"></script>
+            <h2 id="service-heading">Choose a Service</h2>
+
+            <p>
+                Select a service to include in your estimate.
+            </p>
+
+            <div class="grid8" role="group"
+                 aria-label="Available services">
+
+                <button type="button"
+                        class="btn svc"
+                        data-key="boarding">
+                    Boarding
+                </button>
+
+                <button type="button"
+                        class="btn svc"
+                        data-key="daycare">
+                    Daycare
+                </button>
+
+                <button type="button"
+                        class="btn svc"
+                        data-key="grooming">
+                    Grooming
+                </button>
+
+                <button type="button"
+                        class="btn svc"
+                        data-key="training">
+                    Training
+                </button>
+
+                <button type="button"
+                        class="btn svc"
+                        data-key="webcam">
+                    Webcam Access
+                </button>
+
+                <button type="button"
+                        class="btn svc"
+                        data-key="taxi">
+                    Pet Taxi
+                </button>
+
+                <button type="button"
+                        class="btn svc"
+                        data-key="gift">
+                    Gift Cards
+                </button>
+
+                <button type="button"
+                        class="btn svc"
+                        data-key="member">
+                    Memberships
+                </button>
+
+            </div>
+
+        </section>
+
+        <!-- Estimate details -->
+        <section aria-labelledby="details-heading">
+
+            <h2 id="details-heading">Stay Details</h2>
+
+            <p>
+                Choose your dog's size and the dates
+                of the stay.
+            </p>
+
+            <!-- Dog size -->
+            <div class="row">
+
+                <label for="size">Dog Size</label>
+
+                <select id="size" name="size"
+                        aria-describedby="size-help">
+
+                    <option value="S1">Small (S1)</option>
+                    <option value="M2">Medium (M2)</option>
+                    <option value="L3">Large (L3)</option>
+                    <option value="XL4">Extra Large (XL4)</option>
+
+                </select>
+
+                <p id="size-help">
+                    Choose the size category that best
+                    describes your dog. Contact us if
+                    you are unsure which size to select.
+                </p>
+
+            </div>
+
+            <!-- Drop off date -->
+            <div class="row">
+
+                <label for="d1">Drop Off Date</label>
+
+                <input type="date"
+                       id="d1"
+                       name="dropOff"
+                       required
+                       aria-describedby="date-error">
+
+            </div>
+
+            <!-- Pick up date -->
+            <div class="row">
+
+                <label for="d2">Pick Up Date</label>
+
+                <input type="date"
+                       id="d2"
+                       name="pickUp"
+                       required
+                       aria-describedby="date-error">
+
+            </div>
+
+            <!-- Date error message -->
+            <p id="date-error" class="error-message"></p>
+
+            <!-- Estimate actions -->
+            <div class="actions">
+
+                <button type="button"
+                        class="btn"
+                        id="reset">
+                    Clear Selections
+                </button>
+
+                <button type="button"
+                        class="btn"
+                        id="go">
+                    Calculate Estimate
+                </button>
+
+                <button type="button"
+                        class="btn"
+                        id="send">
+                    Request a Stay
+                </button>
+
+            </div>
+
+            <!-- Processing indicator -->
+            <div id="spinner"
+                 class="spinner"
+                 hidden
+                 aria-hidden="true"></div>
+
+            <!-- Accessible status message -->
+            <p id="estimate-status"
+               role="status"
+               aria-live="polite"
+               aria-atomic="true"></p>
+
+        </section>
+
+        <!-- Estimate results -->
+        <section aria-labelledby="estimate-heading">
+
+            <h2 id="estimate-heading">Your Estimate</h2>
+
+            <p>
+                Review the selected services and
+                estimated cost below.
+            </p>
+
+            <h3>Selected Services and Kennel Nights</h3>
+
+            <ul id="list"></ul>
+
+            <p>
+                <strong>Estimated Total:</strong>
+                <span id="total">$0</span>
+            </p>
+
+            <p>
+                This estimate is informational.
+                Contact MPLS Dog Boarding to confirm
+                availability and final pricing.
+            </p>
+
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+
+        <h2>Contact Us</h2>
+
+        <p>
+            Phone:
+            <a href="tel:6125550142">
+                612-555-0142
+            </a>
+        </p>
+
+        <p>
+            Address: 123 Example Street,
+            Minneapolis, MN 55401
+        </p>
+
+        <p>&copy; 2026 MPLS Dog Boarding</p>
+
+    </footer>
+
+    <script src="services.js"></script>
+
 </body>
 </html>
